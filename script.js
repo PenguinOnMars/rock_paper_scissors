@@ -20,12 +20,19 @@ console.log(computerSelection);
 
 // let playerSelection = getUserChoice();
 
-let playerPrompt = prompt("rock, paper, or scissors?").toLowerCase();
-console.log(playerPrompt);
+//let playerPrompt = prompt("rock, paper, or scissors?").toLowerCase();
+//console.log(playerPrompt);
 
-let playerSelection = 0;
+//let playerSelection = 0;
+let playerPrompt;
 
-function getUserChoice(){
+while ((playerPrompt != "rock") && (playerPrompt != "paper") && (playerPrompt != "scissors")){
+  playerPrompt = prompt("rock, paper, or scissors?").toLowerCase();
+  console.log(playerPrompt);
+}
+
+
+/*function getUserChoice(){
   if (playerPrompt === "rock"){
     playerSelection = "rock";
     return playerSelection;
@@ -36,16 +43,16 @@ function getUserChoice(){
   }
   else if (playerSelection === "scissors"){
     playerSelection = "scissors";
-    return playerSelection;
+    return playerSelection; 
   }
   else {
   }
 }
+*/
+//getUserChoice();
 
-getUserChoice();
+//console.log(playerSelection);
 
-console.log(playerSelection);
+//function whoWins(){
 
-function whoWins(){
-
-}
+//}
