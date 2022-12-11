@@ -1,9 +1,7 @@
 // If you select a block of code and use the key sequence Ctrl+K+C, 
 // you'll comment out the section of code. Ctrl+K+U will uncomment the code.
 let winner;
-let user;
-let computer;
-let noOne;
+
 
 function getComputerChoice(){
   return Math.floor(Math.random() * 3);
@@ -25,60 +23,55 @@ console.log(computerSelection);
 
 let playerSelection;
 
-for (let i = 0; i < 5; i++){
-  game(i);
-}
-
 function game(){
     while ((playerSelection != "rock") && (playerSelection != "paper") && (playerSelection != "scissors")){
       playerSelection = prompt("rock, paper, or scissors?").toLowerCase();
       console.log(playerSelection);
       playRound(playerSelection, computerSelection);
+      pickWinner();
     }
 }
 
 function playRound(playerSelection, computerSelection){
   if (playerSelection === "scissors"){
     if (computerSelection === "rock"){
-      return winner = computer;
+      return winner = "computer";
     }
     else if (computerSelection === "paper"){
-      return winner = user;
+      return winner = "user";
     }
   }
   else if (playerSelection === "rock"){
     if (computerSelection === "paper"){
-      return winner = computer;
+      return winner = "computer";
     }
     else if(computerSelection === "scissors"){
-      return winner = user;
+      return winner = "user";
     }
   }
   else if (playerSelection === "paper"){
     if (computerSelection === "rock"){
-      return winner = user;
+      return winner = "user";
     }
     else if(computerSelection === "scissors"){
-      return winner = computer;
+      return winner = "computer";
     }
   }
-  else {
-    return winner = noOne;
-  }
-  pickWinner();
+  return winner, playerSelection = null;
 }
 
 function pickWinner(){
-  if (computer == winner){
+  if (winner === "computer"){
     return("computer wins :(");
   }
-  else if (user == winner){
+  else if (winner === "user"){
     return("you win! :)");
   }
   else {
     return("it's a tie");
   }
 }
+
 console.log(pickWinner());
 //console.log(playRound(playerSelection, computerSelection));
 // /* compare user vs computer
@@ -94,41 +87,52 @@ console.log(pickWinner());
 
 
 
-//     //playRound(playerSelection, computerSelection);
+// playRound(playerSelection, computerSelection);
 
 
+// let user;
+// let computer;
+// let noOne;
 
 // function playRound(playerSelection, computerSelection){
-//   if (playerSelection == "scissors"){
-//     if (computerSelection == "rock"){
-//       return("computer wins :(");
+//   if (playerSelection === "scissors"){
+//     if (computerSelection === "rock"){
+//       return winner = computer;
 //     }
-//     else if (computerSelection == "paper"){
-//       return("you win! :)");
-//     }
-//     else {
-//       return("it's a tie");
+//     else if (computerSelection === "paper"){
+//       return winner = user;
 //     }
 //   }
-//   else if (playerSelection == "rock"){
-//     if (computerSelection == "paper"){
-//       return("computer wins :(");
+//   else if (playerSelection === "rock"){
+//     if (computerSelection === "paper"){
+//       return winner = computer;
 //     }
-//     else if(computerSelection == "scissors"){
-//       return("you win! :)");
-//     }
-//     else {
-//       return("it's a tie");
+//     else if(computerSelection === "scissors"){
+//       return winner = user;
 //     }
 //   }
-//   else if (playerSelection == "paper"){
-//     if (computerSelection == "rock"){
-//       return("you win! :)");
+//   else if (playerSelection === "paper"){
+//     if (computerSelection === "rock"){
+//       return winner = user;
 //     }
-//     else if(computerSelection == "scissors"){
-//       return("computer wins :(");
-//     }
-//     else {
-//       return("it's a tie");
+//     else if(computerSelection === "scissors"){
+//       return winner = computer;
 //     }
 //   }
+//   else {
+//     return winner = noOne;
+//   }
+//   return winner;
+// }
+
+// function pickWinner(){
+//   if (winner === computer){
+//     return("computer wins :(");
+//   }
+//   else if (winner === user){
+//     return("you win! :)");
+//   }
+//   else {
+//     return("it's a tie");
+//   }
+// }
