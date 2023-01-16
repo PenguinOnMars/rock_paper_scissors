@@ -1,9 +1,50 @@
-.container {
+body {
+    background-color: grey;
+}
+
+.selections {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+
 }
 
 img {
     width: 100px;
     height: 100px;
+}
+
+.selection {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 100ms;
+}
+
+.selection:hover {
+    transform: scale(1.05);
+}
+
+.results {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.results-score {
+    margin-left: .1rem;
+    color: #333;
+    font-size: scale(.8);
+}
+
+.result-selection {
+    opacity: .5;
+}
+
+.result-selection.winner {
+    opacity: 1;
+    font-size: 1.2rem;
 }

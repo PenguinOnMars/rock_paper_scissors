@@ -5,23 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <script src="./remake.js" defer></script>
+
   </head>
   <body>
-    <link rel="stylesheet" href="./style.css">
-    <script src="./remake.js"></script>
+    
 
     <div class="container">
-      <button type="selection">
-        <img src="img/rock.png" alt="rock"/>
-        </button>
-      
-      <button type="selection">
-        <img src="img/paper.png" alt="paper"/>
-      </button>
 
-      <button type="selection">
-        <img src="img/scissors.png" alt="scissors"/>
-      </button>
+      <div class="selections">
+        <button class="selection" data-selection="rock">
+          <img src="img/rock.png" id="rock"/>
+          </button>
+        
+        <button class="selection" data-selection="paper">
+          <img src="img/paper.png" id="paper"/>
+        </button>
+
+        <button class="selection" data-selection="scissors">
+          <img src="img/scissors.png" id="scissors"/>
+        </button>
+      </div>
+
+      <div class="results">
+        <div>
+          user
+          <span class="userScore" id="userScore" data-user-score>0</span>
+        </div>
+        <div>
+          computer
+          <span class="computerScore" id="computerScore" data-computer-score>0</span>
+        </div>
+      </div>
+
+      <div class="bigWinner" id="bigWinner"></div>
+  
     </div>
   </body>
   
