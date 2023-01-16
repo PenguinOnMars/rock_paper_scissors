@@ -10,7 +10,7 @@
 let userWinCount = 0;
 let computerWinCount = 0;
 
-for (i = 0; i < 5; i++){
+//for (i = 0; i < 5; i++){
 function getComputerChoice(){
     function randomNumber(){
         return Math.floor(Math.random() * 3);
@@ -32,15 +32,17 @@ function getComputerChoice(){
 let computerSelection = getComputerChoice();
 //console.log(computerSelection);
 
+const rock = document.createElement('button');
+rock.innerText = 'rock';
+
+const paper = document.createElement('button');
+paper.innerText = 'paper';
+
+const scissors = document.createElement('button');
+paper.innerText = 'scissors';
+
 function getUserChoice(){
-    let userChoice = prompt("rock, paper, or scissors?").toLowerCase();
-    if ((userChoice == "rock") ||
-        (userChoice == "paper") || 
-        (userChoice == "scissors")){
-        return userChoice;
-    }
-    alert("invalid answer");
-    return userChoice = getUserChoice();
+    
 }    
 
 let playerSelection = getUserChoice();
@@ -102,7 +104,7 @@ else if (winner == "computer"){
 
 
 alert("player score: " + userWinCount + "\ncomputer score: " + computerWinCount);
-}
+//}
 if (userWinCount > computerWinCount){
     alert("YOU WIN!");
 }
