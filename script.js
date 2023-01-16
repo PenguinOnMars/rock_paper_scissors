@@ -1,138 +1,153 @@
-// If you select a block of code and use the key sequence Ctrl+K+C, 
-// you'll comment out the section of code. Ctrl+K+U will uncomment the code.
-let winner;
+//make rock/paper/scissors game
+// x randomly generate # (0.1.2) 
+// x assign # to computer's choice - rock(0)/paper(1)/scissors(2)
+// x prompt user rock/paper/scissors
+// x compare userInput vs computerInput
+//return winner
+//record winner
+//prompt user again, record winner 1st to 5 wins
 
+// const userScore = document.getElementById('data-user-score');
+// const computerScore = document.getElementById('data-computer-score');
+let uScore = 0;
+let cScore = 0;
 
+//for (i = 0; i < 5; i++){
 function getComputerChoice(){
-  return Math.floor(Math.random() * 3);
-} 
+    function randomNumber(){
+        return Math.floor(Math.random() * 3);
+    }
+    let numberAssign = randomNumber(3);
+    //console.log(numberAssign);
 
-let computerSelection = getComputerChoice(3);
-console.log(computerSelection);
+    if (numberAssign === 0){
+        return "rock";
+    }
+    else if (numberAssign === 1){
+        return "paper";
+    }
+    else if (numberAssign === 2){
+        return "scissors";
+    }
+}
 
-if(computerSelection === 0){
-  computerSelection = "rock";
-}
-else if(computerSelection === 1){
-  computerSelection = "paper";
-}
-else{
-  computerSelection = "scissors";
-}
-console.log(computerSelection);
+//console.log(computerSelection);
+
 
 let playerSelection;
+let computerSelection;
+let winner;
 
-function game(){
-    while ((playerSelection != "rock") && (playerSelection != "paper") && (playerSelection != "scissors")){
-      playerSelection = prompt("rock, paper, or scissors?").toLowerCase();
-      console.log(playerSelection);
-      playRound(playerSelection, computerSelection);
-      pickWinner();
-    }
-}
+const selectionButtons = document.querySelectorAll('[data-selection]')
+
+selectionButtons.forEach(selectionButton => {
+    selectionButton.addEventListener('click', e => {
+        
+        playerSelection = selectionButton.dataset.selection;
+        computerSelection = getComputerChoice();
+        winner = playRound(playerSelection, computerSelection);
+
+        console.log(playerSelection);
+        console.log(computerSelection);
+        console.log(winner);
+
+        if (winner == "user") parseInt(userScore) + 1;
+        if (winner == "computer") parseInt(computerScore) + 1;
+    })
+    //console.log(playerSelection);
+})
+//console.log(playerSelection);
+// function makeSelection(selection) {
+//     console.log(selection);
+// }
 
 function playRound(playerSelection, computerSelection){
-  if (playerSelection === "scissors"){
-    if (computerSelection === "rock"){
-      return winner = "computer";
+    if (playerSelection === "rock"){
+        if (computerSelection === "paper"){
+            //alert("computer wins :(");
+            cScore++;
+            updateScore();
+            return "computer";
+        }
+        else if (computerSelection === "rock"){
+            //alert("it's a tie");
+            return "tie";
+        }
+        //alert("you win! :D");
+        uScore++;
+        updateScore();
+        return "user";
     }
-    else if (computerSelection === "paper"){
-      return winner = "user";
+    else if (playerSelection === "paper"){
+        if (computerSelection === "scissors"){
+            //alert("computer wins :(");
+            cScore++;
+            updateScore();
+            return "computer";
+        }
+        else if (computerSelection === "paper"){
+            //alert("it's a tie");
+            return "tie";
+        }
+        //alert("you win! :D");
+        uScore++;
+        updateScore();
+        return "user";
     }
-  }
-  else if (playerSelection === "rock"){
-    if (computerSelection === "paper"){
-      return winner = "computer";
+    else if (playerSelection === "scissors"){
+        if (computerSelection === "rock"){
+            //alert("computer wins :(");
+            cScore++;
+            updateScore();
+            return "computer";
+        }
+        else if (computerSelection === "scissors"){
+            //alert("it's a tie");
+            return "tie";
+        }
+        //alert("you win! :D");
+        uScore++;
+        updateScore();
+        return "user";
     }
-    else if(computerSelection === "scissors"){
-      return winner = "user";
-    }
-  }
-  else if (playerSelection === "paper"){
-    if (computerSelection === "rock"){
-      return winner = "user";
-    }
-    else if(computerSelection === "scissors"){
-      return winner = "computer";
-    }
-  }
-  return winner, playerSelection = null;
 }
 
-function pickWinner(){
-  if (winner === "computer"){
-    return("computer wins :(");
-  }
-  else if (winner === "user"){
-    return("you win! :)");
-  }
-  else {
-    return("it's a tie");
-  }
+const updateScore = () => {
+    const userScore = document.getElementById('userScore');
+    const computerScore = document.getElementById('computerScore');
+    const bigWinner = document.getElementById('bigWinner');
+    userScore.textContent = uScore;
+    computerScore.textContent = cScore;
+    if (cScore == 5) {
+        bigWinner.textContent = 'computer wins :('
+    }
+    else if (uScore == 5) {
+        bigWinner.textContent = 'you win! :D'
+    }
 }
 
-console.log(pickWinner());
-//console.log(playRound(playerSelection, computerSelection));
-// /* compare user vs computer
-//   if paper vs rock 
-//   paper wins
-//   if rock vs scissors
-//   rock win
-//   if scissors vs rock
-//   scissors wins
-//   else its a tie
 
 
+// const updateScore = () => {
+//     // let userScore = document.querySelector('userScore');
+//     // let computerScore = document.querySelector('computerScore');
+//     userScore.textContent = uScore;
+//     computerScore.textContent = cScore;
+// };
 
 
+//let computerSelection = getComputerChoice();
+//console.log(computerSelection);
+//let playerSelection = getUserChoice();
+//console.log(playerSelection);
 
-// playRound(playerSelection, computerSelection);
 
-
-// let user;
-// let computer;
-// let noOne;
-
-// function playRound(playerSelection, computerSelection){
-//   if (playerSelection === "scissors"){
-//     if (computerSelection === "rock"){
-//       return winner = computer;
-//     }
-//     else if (computerSelection === "paper"){
-//       return winner = user;
-//     }
-//   }
-//   else if (playerSelection === "rock"){
-//     if (computerSelection === "paper"){
-//       return winner = computer;
-//     }
-//     else if(computerSelection === "scissors"){
-//       return winner = user;
-//     }
-//   }
-//   else if (playerSelection === "paper"){
-//     if (computerSelection === "rock"){
-//       return winner = user;
-//     }
-//     else if(computerSelection === "scissors"){
-//       return winner = computer;
-//     }
-//   }
-//   else {
-//     return winner = noOne;
-//   }
-//   return winner;
+// alert("player score: " + userWinCount + "\ncomputer score: " + computerWinCount);
+// //}
+// if (userWinCount > computerWinCount){
+//     alert("YOU WIN!");
 // }
-
-// function pickWinner(){
-//   if (winner === computer){
-//     return("computer wins :(");
-//   }
-//   else if (winner === user){
-//     return("you win! :)");
-//   }
-//   else {
-//     return("it's a tie");
-//   }
+// else if (userWinCount < computerWinCount){
+//     alert("YOU LOSE!");
 // }
+// else alert("IT'S A TIE");
